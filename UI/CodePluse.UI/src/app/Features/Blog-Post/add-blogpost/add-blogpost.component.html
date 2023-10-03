@@ -1,0 +1,88 @@
+<div class="container" style="margin-top: 5.25rem!important;"  >
+  <h2 style="margin-top: 5.25rem!important;" >Add Blog Post</h2>
+    <form #form="ngForm" (ngSubmit)="OnSubmitForm()">
+        <div class="row">
+            <div class="col-sm-4">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title"  [(ngModel)]="model.title"  >
+            </div>
+            <div class="col-sm-4" >
+              <label for="discription" class="form-label">Short Discription</label>
+              <input type="text" class="form-control" id="shortdiscription" name="discription"  [(ngModel)]="model.discription"  >
+            </div>
+             
+           
+              <div class="col-sm-4">
+                <label for="urlHandle" class="form-label">Url Handle</label>
+                <input type="text" class="form-control" id="urlHandle" name="urlHandle"    [(ngModel)]="model.urlHandle" >
+              </div>
+              <div class="col-sm-3">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" class="form-control" id="author" name="author"  [(ngModel)]="model.author"   >
+              </div>
+            </div>
+              <div class="row">
+              <div class="col-sm-3">
+                <label for="publishedDate" class="form-label">Published Date</label>
+                <input type="date" class="form-control" id="publishedDate" name="publishedDate" value="{{model.publishedDate}}" 
+                  [ngModel]="model.publishedDate | date:'yy-MM-dd'"  (ngModelChange)="model.publishedDate =$event">
+              </div>
+              <div class="col-sm-3" >
+                <label for="categories" class="form-label">Categories</label>
+               <ng-container *ngIf="categories$ | async as categories">
+                 <select class="form-control" [(ngModel)]="model.categories"  name="categories" id="categories" multiple >
+                  <option *ngFor="let category of categories"  [value]="category.id ">{{category.name}}</option>
+                 </select>
+               </ng-container>
+              </div>
+              <div class="col-sm-4">
+                <label for="featuredImageUrl" class="form-label">Image
+                    <button type="button"  class="btn btn-dark" (click)="openImgaeselectormodel()">Select Image</button> 
+                </label>
+
+                <ng-container *ngIf="model.featureImaheUrl !=''">
+                  <div>
+                    <img [src]="model.featureImaheUrl" style="height:100px;" class="my-2">
+                  </div>
+                </ng-container>
+                 <input type="text" class="form-control" id="featuredImageUrl" name="featuredImageUrl" [(ngModel)]="model.featureImaheUrl"  >
+              </div>
+            
+            </div>
+          
+       
+     
+            <label for="content" class="form-label">Content</label>
+            <!-- <textarea type="text" class="form-control" id="content" name="content" [(ngModel)]="model.content"></textarea> -->
+            <div class="d-flex flex-row">
+              <div class="col-2 p-2">
+                <textarea type="text" style="height: 350px;max-height:350px ;width: 550px;" class="form-control" id="content" name="content" [(ngModel)]="model.content"></textarea>
+              </div>
+              <div class="col-2 p-2" style="max-height:350px;overflow-y: scroll;margin-left: 447px;
+              width: 500px;">
+              <markdown [data]="model.content"></markdown>
+              </div>
+            </div>
+          
+      
+          <div class="mt-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox"   id="isVisable"  [(ngModel)]="model.isVisable" name="isVisable" >
+            <label class="form-check-label" for="isVisable">
+                IsVisible
+            </label>
+             </div>
+        
+                 </div>
+       
+    
+                    <button type="submit" style="
+                    margin-top: 8px;
+                    width: 151px;
+                     margin-left: 1000px;" class="btn btn-dark" >Submit</button>
+      </form>
+</div>
+<div class="imges-container-modal" [ngClass]="{'d-block': isImageSelectoer,'d-none':!isImageSelectoer}">
+  <button class="btn btn-dark" style="    margin-left: 95%;  margin-bottom: -12%;"  (click)="closemodel()">Close</button>
+  <app-image-selectore></app-image-selectore>
+</div>

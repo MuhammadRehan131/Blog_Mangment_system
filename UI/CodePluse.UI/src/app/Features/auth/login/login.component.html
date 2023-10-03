@@ -1,0 +1,61 @@
+<form #form="ngForm" (ngSubmit)="OnSubmit()" style="margin-top: 9%; margin-left: 18%; margin-right: 26%;">
+    <!-- Email input -->
+    <div class="container" style="background-image:url('https://i.pinimg.com/736x/7f/c1/a3/7fc1a3b396df40c35bddfc2fe5ce0d5d.jpg') ;">
+       
+        <div class="form-outline mb-4">
+        <label class="form-label text-white" style="    font-weight: 700;" for="email">Email Address</label>
+      <input type="email" id="email" name="email"  class="form-control text-white opacity-25" [(ngModel)]="model.email" />
+      
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <label class="form-label text-white" style="    font-weight: 700;" for="password">Password</label>
+      <input type="text" id="password" name="password" class="form-control   opacity-25" [(ngModel)]="model.password" />
+      
+    </div>
+  
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+        <!-- Checkbox -->
+        <div class="form-check" style="margin-right: 58%;    font-weight: 700;">
+          <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+          <label class="form-check-label text-white" for="form2Example31"> Remember me </label>
+        </div>
+      </div>
+  
+      <div class="col">
+        <!-- Simple link -->
+        <a href="#!" class="text-white" style="margin-left: 59%;    font-weight: 700;
+    ">Forgot password?</a>
+      </div>
+    </div>
+   
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-dark  btn-block mb-4" style="    margin-left: 22%;
+    width: 50%;    font-weight: 700;">Sign in</button>
+  
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p class="text-white" style="    font-weight: 700;">Not a member? <a href="#!" style="    font-weight: 700;" class="text-white">Register</a></p>
+      <p class="text-white" style="    font-weight: 700;">or sign up with:</p>
+      <!-- <button type="button" class="btn btn-link btn-floating mx-1">
+        <i class="fab fa-facebook-f"></i>
+      </button> -->
+  
+      <!-- <button type="button" class="btn btn-dark btn-floating mx-1">
+        <i class="fab fa-google"></i>
+      </button>
+  
+      <button type="button" class="btn btn-dark btn-floating mx-1">
+        <i class="fab fa-twitter"></i>
+      </button>
+  
+      <button type="button" class="btn btn-dark btn-floating mx-1">
+        <i class="fab fa-github"></i>
+      </button> -->
+     
+</div>
+</div>
+  </form>

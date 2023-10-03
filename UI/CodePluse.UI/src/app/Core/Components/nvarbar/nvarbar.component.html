@@ -1,0 +1,61 @@
+<nav class="navbar navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Wellcome to Code Plus</a>
+
+    <div class="d-flex">
+      <ng-container *ngIf="user ===undefined;else LogOut">
+        <a [routerLink]="['/login']" class="btn btn-primary" aria-current="page"
+          style="    margin-left: 578%;">LogIn</a>
+      </ng-container>
+      <ng-template #LogOut>
+        <div style="margin-left: 85%;">
+          <span class="text-white">{{user?.email}}</span><br />
+          <span class="text-white">{{user?.roles}}</span>
+
+        </div>
+        <button class="btn btn-primary form-control" style="margin-left: 41%;height: 2%;"
+          (click)="OnLogOut()">LogOut</button>
+      </ng-template>
+
+
+
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+      aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+      aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="admin/home">Home</a>
+          </li>
+          <ng-container *ngIf="user !==undefined && user?.roles?.includes('Writer')">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Admin
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" routerLink="admin/category">Category</a></li>
+                <li><a class="dropdown-item" routerLink="admin/BlogPost">Blog Post</a></li>
+                <!-- <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+              </ul>
+            </li>
+          </ng-container>
+
+        </ul>
+
+
+      </div>
+    </div>
+  </div>
+</nav>
